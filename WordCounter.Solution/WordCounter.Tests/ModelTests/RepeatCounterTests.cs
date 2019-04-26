@@ -1,16 +1,29 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ProjectName;
+using WordCounter.Models;
 
-namespace ProjectName.Tests
+namespace WordCounter.Tests
 {
   [TestClass]
-  public class LeapYearTest
+  public class RepeatCounterTest
   {
+   
     [TestMethod]
-public void NameOfMethodWeAreTesting_DescriptionOfBehavior_ExpectedReturnValue()
-{
-  // any necessary logic to prep for test; instantiating new classes, etc.
-  Assert.AreEqual(EXPECTED RESULT, CODE TO TEST);
-}
+    public void Test_RepeatCounter_SingleWord_True()
+    {
+        RepeatCounter testRepeatCounter = new RepeatCounter("Hello World", "Hello");
+        Assert.AreEqual(1, testRepeatCounter.GetPairs());
+    }
+    [TestMethod]
+    public void Test_RepeatCounter_MultipleWord_True()
+    {
+        RepeatCounter testRepeatCounter = new RepeatCounter("Why Hello there Hello World", "Hello");
+        Assert.AreEqual(2, testRepeatCounter.GetPairs());
+    }
+     [TestMethod]
+    public void Test_RepeatCounter_CaseSensitive_True()
+    {
+        RepeatCounter testRepeatCounter = new RepeatCounter("Hello World", "hello");
+        Assert.AreEqual(1, testRepeatCounter.GetPairs());
+    }
   }
 }
